@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddTask from "./AddTask/AddTask";
 
 import styles from "./taskApp.module.css";
@@ -30,12 +30,46 @@ const TaskApp = () => {
     
     setTodos([...todo])
   }
+
+  const addTodo = (newTodo)=>{
+    let count = 0;
+    
+    for(let i=0; i<todos.length; i++)
+    {
+      if(todos[i].text === newTodo)
+      {
+        count++;
+        break;
+      }
+    }
+    // console.log(count)
+    if(count === 0)
+    {
+      let newTask = {
+        text:newTodo,
+        done:false,
+        count:1
+        }
+    
+        setTodos([...todos,newTask])
+    }
+  }
+
+  const gettodos = async()=>{
+    let tododata = await fetch("http://localhost:8080/todos").then((d)=>d.json())
+
+    setTodos(tododata)
+  }
+
+  useEffect(()=>{
+      gettodos()
+    },[])
   return (
     <div data-testid="task-app" className={styles.taskApp}>
       {/* Header */}
       <TaskHeader todos={todos}/>
       {/* Add Task */}
-      <AddTask setTodos={setTodos} />
+      <AddTask setTodos={setTodos} addTodo={addTodo}/>
 
       <hr />
       {/* Tasks */}

@@ -2,10 +2,19 @@
   /* Sample  */
   list-style-type: none;
   display: flex;
+  align-items: center;
+  margin-top: -10px;
+  justify-content: space-evenly;
+  /* border: 1px solid red; */
+  width: 100%;
+  margin-left: -30px;
 }
 .task > input{
   width: 20px;
+  cursor: pointer;
 }
 .task > button{
   height: 20px;
+  cursor: pointer;
 }
+
