@@ -1,6 +1,12 @@
 .counter {
   /* TODO */
+  font-weight: bold;
 }
 .counter > button{
   margin: 10px;
+  background-color: #8197e8;
+  color: white;
+  border: none;
+  font-size: 20px;
 }
+

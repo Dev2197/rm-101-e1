@@ -16,5 +16,6 @@
 .task > button{
   height: 20px;
   cursor: pointer;
+  margin-left: -40px;
 }
 
