@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import Task from "../Task/Task";
 import styles from "./tasks.module.css";
 
-const Tasks = ({todos,deleteTask,toggleTask}) => {
+const Tasks = ({todos,deleteTask,toggleTask,changeCounter}) => {
   // NOTE: do not delete `data-testid` key value pair
   const [tasks,setTasks]= useState([])
+  // console.log(tasks)
 
   useEffect(()=>{
     setTasks(todos)
@@ -25,7 +26,12 @@ const Tasks = ({todos,deleteTask,toggleTask}) => {
       {tasks.length > 0 ? 
       <ul data-testid="tasks" className={styles.tasks}>
       {/* Task List */}
-      <Task  tasks={tasks} deleteTask={deleteTask} toggleTask={toggleTask}/>
+      {/* <Task  tasks={tasks} deleteTask={deleteTask} toggleTask={toggleTask}/> */}
+      
+      {tasks.map((e,id)=>(
+        <Task task={e} deleteTask={deleteTask} toggleTask={toggleTask} changeCounter={changeCounter} key={id+1}/>
+      ))}
+      
       
     </ul> :
     <div data-testid="tasks-empty" className={styles.empty}>

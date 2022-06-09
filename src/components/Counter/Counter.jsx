@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styles from "./counter.module.css";
 
-const Counter = ({counter}) => {
+const Counter = ({counter,taskid,changeCounter}) => {
   // sample value to be replaced
   // let count = 0;
   // NOTE: do not delete `data-testid` key value pair
 
-  const [count,setCount] = useState(0)
+  const [count,setCount] = useState()
 
   const incdc = (c)=>{
-    let temp = count+c;
-
-    if(temp < 0)
-    {
-      setCount(0)
-    }
-    else{
-      setCount(temp)
-    }
+    changeCounter(taskid,c)
   }
 
   useEffect(()=>{

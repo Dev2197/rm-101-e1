@@ -4,27 +4,6 @@ import styles from "./addTask.module.css";
 const AddTask = ({setTodos,addTodo}) => {
   // NOTE: do not delete `data-testid` key value pair
   const [newTask,setNewTask] = useState()
-  // const [todoList, setTodoList] = useState([])
-  // console.log(todoList)
-
-  // const addTodo = ()=>{
-  //   setTodoList([...todoList,todo])
-  // }
-
- 
-
-  // useEffect(()=>{
-  //   gettodos()
-  // },[])
-
-  // useEffect(()=>{
-  //   setTodos(todoList)
-  // },[todoList])
-  // const gettodos = async()=>{
-  //   let todos = await fetch("http://localhost:8080/todos").then((d)=>d.json())
-
-  //   setTodoList(todos)
-  // }
 
   const handleChange = (e)=>{
     setNewTask(e.target.value)

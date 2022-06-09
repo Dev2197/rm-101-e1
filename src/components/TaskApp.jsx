@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import nextId from "react-id-generator";
 import AddTask from "./AddTask/AddTask";
 
 import styles from "./taskApp.module.css";
@@ -9,18 +10,19 @@ import Tasks from "./Tasks/Tasks";
 const TaskApp = () => {
   // NOTE: do not delete `data-testid` key value pair
   const [todos,setTodos] = useState([])
+  
 
   // console.log(todos)
 
   const deleteTask = (index)=>{
-    // console.log(text)
-    const newTodos = todos.filter((e,id)=>{ return id !== index})
+    
+    const newTodos = todos.filter((e,id)=>{ return e.id !== index})
     setTodos(newTodos)
   }
 
   const toggleTask = (index)=>{
     const todo = todos.map((e,id)=>{
-      if(id === index)
+      if(e.id === index)
       {
         e.done = !e.done
       }
@@ -30,6 +32,30 @@ const TaskApp = () => {
     
     setTodos([...todo])
   }
+
+  
+  const changeCounter = (id,value)=>{
+
+    const todo = todos.map((e)=>{
+      if(e.id === id)
+      {
+        e.count = e.count+value;
+        if(e.count < 0)
+        {
+          e.count = 0;
+        }
+      }
+
+      return e;
+    })
+
+    setTodos([...todo])
+  }
+
+  
+  
+
+ 
 
   const addTodo = (newTodo)=>{
     let count = 0;
@@ -46,6 +72,7 @@ const TaskApp = () => {
     if(count === 0)
     {
       let newTask = {
+        id:nextId(),
         text:newTodo,
         done:false,
         count:1
@@ -64,6 +91,12 @@ const TaskApp = () => {
   useEffect(()=>{
       gettodos()
     },[])
+
+    
+      
+            
+
+
   return (
     <div data-testid="task-app" className={styles.taskApp}>
       {/* Header */}
@@ -73,7 +106,7 @@ const TaskApp = () => {
 
       <hr />
       {/* Tasks */}
-      <Tasks todos={todos} deleteTask={deleteTask} toggleTask={toggleTask}/>
+      <Tasks todos={todos} deleteTask={deleteTask} toggleTask={toggleTask} changeCounter={changeCounter}/>
     </div>
   );
 };

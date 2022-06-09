@@ -11,7 +11,7 @@ const TaskHeader = ({todos}) => {
 
     for(let i=0; i<todos.length; i++)
     {
-      if(todos[i].done == false)
+      if(todos[i].done === false)
       {
         count++;
       }
