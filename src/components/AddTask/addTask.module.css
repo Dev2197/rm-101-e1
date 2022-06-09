@@ -1,3 +1,22 @@
 .addTask {
   /* Sample */
+  border: 1px solid black;
 }
+input{
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 50px;
+  width: 80%;
+  border: none;
+  outline: none;
+}
+.button{
+  height: 28px;
+  font-weight: bolder;
+  color: blue;
+  font-size: 3rem;
+  border: none;
+  cursor: pointer;
+}
+

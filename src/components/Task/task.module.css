@@ -1,3 +1,11 @@
 .task {
   /* Sample  */
+  list-style-type: none;
+  display: flex;
+}
+.task > input{
+  width: 20px;
+}
+.task > button{
+  height: 20px;
 }
